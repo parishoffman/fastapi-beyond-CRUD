@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.3...v1.0.4) (2025-02-18)
+
+
+### Bug Fixes
+
+* updated pytest.yml ([1327c42](https://github.com/parishoffman/fastapi-beyond-CRUD/commit/1327c42bef4c99f0c1ac108fc6ec80c99cb37522))
+
 ## [1.0.3](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.2...v1.0.3) (2025-02-18)
 
 
