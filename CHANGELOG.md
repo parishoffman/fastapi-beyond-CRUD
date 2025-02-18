@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.1...v1.0.2) (2025-02-18)
+
+
+### Bug Fixes
+
+* updated pip install on pytest.yml ([1fa1f5b](https://github.com/parishoffman/fastapi-beyond-CRUD/commit/1fa1f5b082e78adacd7eb16f091ac63c7b332e9a))
+
 ## [1.0.1](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.0...v1.0.1) (2025-02-18)
 
 
