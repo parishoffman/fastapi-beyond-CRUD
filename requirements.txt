@@ -6,7 +6,7 @@ anyio==4.4.0
 asgiref==3.8.1
 async-timeout==4.0.3
 asyncpg==0.29.0
-bcrypt==4.2.0
+bcrypt==4.0.1
 billiard==4.2.0
 blinker==1.8.2
 celery==5.4.0
@@ -72,4 +72,3 @@ vine==5.1.0
 watchfiles==0.22.0
 wcwidth==0.2.13
 websockets==12.0
-pytest==3.4.2
