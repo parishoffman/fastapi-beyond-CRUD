@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.2...v1.0.3) (2025-02-18)
+
+
+### Bug Fixes
+
+* updated requirements.txt ([fa60270](https://github.com/parishoffman/fastapi-beyond-CRUD/commit/fa6027032a0bf2de26edd05425e945152d330361))
+
 ## [1.0.2](https://github.com/parishoffman/fastapi-beyond-CRUD/compare/v1.0.1...v1.0.2) (2025-02-18)
 
 
