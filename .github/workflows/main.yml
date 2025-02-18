@@ -22,5 +22,5 @@ jobs:
           password: D4dCwy6bz9c4UQ1Gyy
           subject: Github Actions Night Build
           to: pthoffman@dons.usfca.edu
-          from: Paris Hoffman
+          from: paris
           body: Night build failed
