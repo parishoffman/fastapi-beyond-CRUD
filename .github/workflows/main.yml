@@ -2,13 +2,26 @@ name: Conventional Commits
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-    name: Conventional Commits lala
+    name: Conventional Commits
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: webiny/action-conventional-commits@v1.3.0
+
+      - name: Send mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.ethereal.email
+          server_port: 587
+          username: cortez.champlin38@ethereal.email           
+          password: 3mMtw9BrsWBbWYFsAx
+          subject: Github Actions Convention Commits
+          to: pthoffman@dons.usfca.edu
+          from: Paris
+          body: PR failed
