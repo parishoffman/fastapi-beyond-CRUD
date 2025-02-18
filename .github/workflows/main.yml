@@ -23,5 +23,5 @@ jobs:
           password: 3mMtw9BrsWBbWYFsAx
           subject: Github Actions Convention Commits
           to: pthoffman@dons.usfca.edu
-          from: paris
+          from: Paris
           body: PR failed
