@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Conventional Commits
+    name: Conventional Commits lala
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
