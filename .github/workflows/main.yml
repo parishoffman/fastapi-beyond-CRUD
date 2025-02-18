@@ -2,13 +2,25 @@ name: Conventional Commits
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-    name: Conventional Commits lala
+    name: Conventional Commits
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: webiny/action-conventional-commits@v1.3.0
+
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.ethereal.email
+          server_port: 587
+          username: jose.will55@ethereal.email          
+          password: D4dCwy6bz9c4UQ1Gyy
+          subject: Github Actions Night Build
+          to: pthoffman@dons.usfca.edu
+          from: Paris Hoffman
+          body: Night build failed
