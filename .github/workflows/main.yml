@@ -18,7 +18,7 @@ jobs:
         with:
           server_address: smtp.ethereal.email
           server_port: 587
-          username: jose.will55@ethereal.email          
+          username: katelynn79@ethereal.email           
           password: D4dCwy6bz9c4UQ1Gyy
           subject: Github Actions Night Build
           to: pthoffman@dons.usfca.edu
