@@ -1,5 +1,3 @@
-version: "3.0"
-
 services:
   web:
     build: .
@@ -18,12 +16,19 @@ services:
       DOMAIN: ${DOMAIN}
       REDIS_URL: ${REDIS_URL}
 
+    command: >
+      sh -c "alembic upgrade head && fastapi run src --port 8000 --host 0.0.0.0 "
+
     ports:
       - "8000:8000"
 
     depends_on:
       - db
       - redis
+      # db:
+      #   condition: service_healthy
+      # redis:
+      #   condition: service_healthy
 
     networks:
       - app-network
@@ -36,6 +41,12 @@ services:
       POSTGRES_DB: bookly
       POSTGRES_PASSWORD: testpass
 
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready"]
+    #   interval: 5s
+    #   retries: 5
+    #   start_period: 10s
+
     ports:
      - "5432:5432"
 
@@ -46,6 +57,12 @@ services:
       - app-network
   redis:
     image: redis:6
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "ping"]
+      interval: 5s
+      retries: 5
+      start_period: 5s
 
     ports:
      - "6379:6379"
