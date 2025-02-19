@@ -19,3 +19,36 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Run tests
+        run: pytest
+        continue-on-error: true
+        id: pytest
+      - name: Send email on failure
+        if: steps.pytest.outcome == 'failure'
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.ethereal.email
+          server_port: 587
+          username: cortez.champlin38@ethereal.email           
+          password: 3mMtw9BrsWBbWYFsAx
+          subject: Github Actions Convention Commits
+          to: pthoffman@dons.usfca.edu
+          from: Paris
+          body: Pytest failed in GitHub Actions workflow
