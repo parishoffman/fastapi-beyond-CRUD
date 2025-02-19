@@ -1,8 +1,7 @@
 name: Build
-
 on:
-  push:
-    branches: [main]
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
   build:
@@ -48,7 +47,7 @@ jobs:
           server_port: 587
           username: cortez.champlin38@ethereal.email           
           password: 3mMtw9BrsWBbWYFsAx
-          subject: Github Actions Convention Commits
+          subject: Failed Build
           to: pthoffman@dons.usfca.edu
           from: Paris
           body: Pytest failed in GitHub Actions workflow
