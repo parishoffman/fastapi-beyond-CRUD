@@ -41,6 +41,6 @@ def test_get_book_by_uid(test_client, fake_book_service,test_book, fake_session)
 def test_update_book_by_uid(test_client, fake_book_service,test_book, fake_session):
     response = test_client.put(f"{books_prefix}/{test_book.uid}")
 
-    assert not fake_book_service.get_book_called_once()
+    assert fake_book_service.get_book_called_once()
     assert fake_book_service.get_book_called_once_with(test_book.uid,fake_session)
 
