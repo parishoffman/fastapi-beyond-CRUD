@@ -1,9 +1,10 @@
-name: Build and Publish Docker Image
+name: Build
+
 on:
   push:
     branches: [ main ]
   # schedule:
-  #   - cron: '*/5 * * * *'
+  #   - cron: '*/5 * * * *'  # Fixed cron syntax
 
 jobs:
   build:
@@ -14,6 +15,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,22 +51,28 @@ jobs:
           from: Paris
           body: Pytest failed in GitHub Actions workflow
 
-      - name: Log in to GitHub Container Registry
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GH_TOKEN }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.TOKEN }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: pthoffman/main
+          tags: |
+            type=raw,value=latest
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
           file: ./Dockerfile
-          platforms: ${{ matrix.platforms }}
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/fastapi:latest
-          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=FastAPI-App
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
   release:
     name: Create Release
